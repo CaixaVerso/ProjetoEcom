@@ -1,59 +1,75 @@
-# Projetoecom
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 21.1.5.
 
-## Development server
+Configuração Global: app.config.ts.
 
-To start a local development server, run:
+Estrutura Raiz: app.component.ts.
 
-```bash
-ng serve
-```
+Rotas e Segurança: app.routes.ts, admin.guard.ts.
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+Dados e Reatividade: ProdutoService, AuthService, CarrinhoService.
 
-## Code scaffolding
+Interfaces de Usuário: Login, Lista, Detalhes, Formulários e Shared.
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+Atividade:
 
-```bash
-ng generate component component-name
-```
+Com base no Projeto Exemplo ajustar para um BancoDev ( banco para consignado desenvolvedores)
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+Usuario(Cliente)
 
-```bash
-ng generate --help
-```
+Criar o Formulario esqueceu sua senha
+e o formulario criar sua conta
 
-## Building
+Gerente(Admin)
 
-To build the project run:
+Visualiza as solicitações(consignado) desse cliente podendo aprovar ou não solicitação
 
-```bash
-ng build
-```
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
 
-## Running unit tests
 
-To execute unit tests with the [Vitest](https://vitest.dev/) test runner, use the following command:
+1. Raiz e Configurações Globais
 
-```bash
-ng test
-```
+.angular/ & node_modules/: Pastas geradas automaticamente. Contêm o cache do framework e as bibliotecas (dependências) instaladas.
 
-## Running end-to-end tests
+public/: Armazena ativos estáticos que não passam pelo processo de compilação, como o favicon ou imagens globais.
 
-For end-to-end (e2e) testing, run:
+src/: O coração da aplicação. Todo o código fonte desenvolvido por você reside aqui.
 
-```bash
-ng e2e
-```
+2. O Diretório src/app (Núcleo da Aplicação)
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
+Aqui é onde a lógica de negócio e os componentes são divididos por responsabilidade:
 
-## Additional Resources
+# components/
 
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+Organizado por contexto de uso:
+
+admin/: Telas de gerenciamento (Dashboard, Novo Produto).
+
+catalogo/: Telas voltadas ao cliente final (Detalhes do Produto, Listagem).
+
+login.component: Gerencia a autenticação do usuário.
+
+# core/
+
+Contém o que é essencial e único para o funcionamento da App. Geralmente importado apenas uma vez no root:
+
+guards/: Proteção de rotas (ex: impede acesso à pasta admin se não estiver logado).
+
+resolvers/: Pré-carregamento de dados antes de uma página abrir.
+
+services/: Lógica de comunicação com APIs (ex: ProdutoService).
+
+# models/
+
+Define a "forma" dos dados (Interfaces TypeScript):
+
+carrrinhoItem.ts: Estrutura do item no carrinho.
+
+produto.ts: Atributos de um produto (nome, preço, etc).
+
+usuario.ts: Dados do perfil do usuário.
+
+
+# shared/
+
+Contém componentes reutilizáveis que aparecem em múltiplas páginas, como o Footer (rodapé) e a Navbar (menu de navegação).
+
