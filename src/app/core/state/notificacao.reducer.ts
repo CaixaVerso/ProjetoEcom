@@ -25,7 +25,7 @@ export interface NotificacaoState{
             ...state,lista:[...state.lista,notificacao]
         }  
     }),
- )
- //o reducer reage ao singal de limpeza, resetando o objeto de estado para sua forma original 
+     //o reducer reage ao singal de limpeza, resetando o objeto de estado para sua forma original 
  //definida no estadoInicial
  on(Actions.limparNotificacoes,()=>estadoInicial)
+ )

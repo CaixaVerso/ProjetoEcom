@@ -11,6 +11,7 @@ import { provideStore } from '@ngrx/store';
 import { provideHttpClient } from '@angular/common/http';
 import { nofitificaoReducer } from './core/state/notificacao.reducer';
 import {provideEffects} from '@ngrx/effects';
+import { NotificacaoEffects } from './core/state/notificacao.effects';
 /**
  * A constante 'appConfig' é o coração da inicialização.
  * Tudo o que for colocado no array 'providers' ficará disponível para TODO o projeto.
@@ -44,6 +45,6 @@ export const appConfig: ApplicationConfig = {
       O array fica vazio, para ser preparado a infraestrutura
       para as chamadas de api sem quebrar o codigo
     */
-    provideEffects([]),
+    provideEffects([NotificacaoEffects]),
 ]
 };
