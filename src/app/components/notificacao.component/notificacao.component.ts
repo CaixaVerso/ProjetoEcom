@@ -8,7 +8,7 @@ import { selectListaNotificacoes } from '../../core/state/notificacao.selectors'
 
 
 @Component({
-  selector: 'app-notificacao.component',
+  selector: 'app-notificacao',
   imports: [CommonModule],
   templateUrl: './notificacao.component.html',
 })

@@ -1,1 +1,14 @@
-<p>notificacao.component works!</p>
+<div class="fixed top-24 right-5 z-50 flex flex-col gap-2">
+    @for (notif of (lista$ | async);track notif.id){
+        <div [class]="notif.tipo ==='sucesso' ? 'bg-green-500': 'bg-red-500'" 
+        class="text-white px-6 py-4 rounded-2xl shadow-2xl border-l-4 border-black">
+            {{notif.mensagem}}
+        </div>
+    }
+</div>
+
+<!--
+     Gerenciamento de Memória: o async é uma boa pratica , plois sem ele  teria que fazer .subscribe manualmente em um 
+     unsubsribe, evita o vazamento de memoria (memoria leak) e o pipe de forma suave.
+     |  = pipe
+ -->

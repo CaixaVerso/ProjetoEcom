@@ -13,6 +13,9 @@ import { ProdutoService } from '../../../core/services/produto.service';
 // Importa o serviço de rotas para podermos navegar o usuário entre páginas via código.
 import { Router } from '@angular/router';
 
+import { Store } from '@ngrx/store';
+import { AdicionarNotificacao } from '../../../core/state/notificacao.actions';
+
 @Component({
   selector: 'app-product-form',
   // Registra os módulos necessários para que o formulário e as validações funcionem no HTML.
@@ -28,6 +31,8 @@ export class ProdutoFormComponent {
   
   // Injeta o roteador para levar o usuário de volta à tela após o cadastro.
   private router = inject(Router);
+
+  private store = inject(Store);;
 
   /*
    * Define a estrutura do formulário e suas regras de validação (Validators).
@@ -62,11 +67,27 @@ export class ProdutoFormComponent {
 
       // Chama o método do serviço que adiciona o item ao Signal de produtos.
       this.produtoService.adicionarProduto(novoItem);
-      
-      console.log('Produto cadastrado com sucesso:', novoItem);
-      
-      // Redireciona o administrador para a tela para conferir o resultado instantaneamente.
+
+      this.store.dispatch(AdicionarNotificacao({
+        notificacao: {
+          id:Date.now(),
+          mensagem:`Produto ${novoItem.nome} Cadastro com sucesso`,
+          tipo:'sucesso'
+        }
+      }));
+       // Redireciona o administrador para a tela para conferir o resultado instantaneamente.
       this.router.navigate(['/produtos']);
+
+    }else{
+      this.store.dispatch(AdicionarNotificacao({
+        notificacao: {
+          id:Date.now(),
+          mensagem:'preencha todos campos',
+          tipo:'erro'
+        }
+      }));
+      this.formularioProduto.markAsTouched();
     }
   }
 }
+  

@@ -9,6 +9,7 @@ import { RouterOutlet } from '@angular/router';
  */
 import { NavbarComponent } from './shared/navbar.component/navbar.component'; 
 import { FooterComponent } from './shared/footer.component/footer.component';
+import { NotificacaoComponent } from './components/notificacao.component/notificacao.component';
 
 @Component({
   /*SELECTOR 'app-root':
@@ -20,7 +21,7 @@ import { FooterComponent } from './shared/footer.component/footer.component';
    * No Angular, precisamos dizer explicitamente quais peças este componente usa.
    * Aqui registramos o motor de rotas e os componentes de layout.
    */
-  imports: [RouterOutlet, NavbarComponent, FooterComponent],
+  imports: [RouterOutlet, NavbarComponent, FooterComponent, NotificacaoComponent],
   
   templateUrl: './app.html',
   styleUrl: './app.css'

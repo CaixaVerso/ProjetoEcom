@@ -20,9 +20,11 @@ export interface NotificacaoState{
     estadoInicial,
     //Recebe o objeto "notificacao" vindo da action(encapsulamento)
     //e garante que não altere a instância original e cria um novo objeto de estado na memória
-    on(Actions.AdicionarNotificacao,(state, {notificacao})=>({
-        ...state,lista:[...state.lista,notificacao]
-    })),
+    on(Actions.AdicionarNotificacao,(state, {notificacao})=>{
+        return{
+            ...state,lista:[...state.lista,notificacao]
+        }  
+    }),
  )
  //o reducer reage ao singal de limpeza, resetando o objeto de estado para sua forma original 
  //definida no estadoInicial
