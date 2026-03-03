@@ -1,11 +1,23 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
+
+import { CommonModule } from '@angular/common';
+//importa o serviço global de store para acessar o estado da aplicação
+import { Store } from '@ngrx/store';
+import { selectListaNotificacoes } from '../../core/state/notificacao.selectors';
+
+
 
 @Component({
   selector: 'app-notificacao.component',
-  imports: [],
+  imports: [CommonModule],
   templateUrl: './notificacao.component.html',
-  styleUrl: './notificacao.component.css',
 })
 export class NotificacaoComponent {
+
+  private store = inject(Store);
+
+
+  lista$ =this.store.select(selectListaNotificacoes);
+
 
 }
